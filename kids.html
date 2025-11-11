@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jiu-Jitsu Kids — Tio Chico Jiu-Jitsu</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black: #000000;
+      --white: #ffffff;
+      --red: #d90429;
+      --gray-900: #0f0f0f;
+      --gray-700: #222;
+      --muted: #bdbdbd;
+      --container: 1100px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--black) 0%,var(--gray-900) 100%);
+      color:var(--white);
+      line-height:1.6;
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      width:100%;
+      background:rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      padding:39px 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .logo{height:56px;}
+    nav ul{display:flex; gap:22px; align-items:center; list-style:none; margin:0; padding:0;}
+    nav ul li a{
+      text-decoration:none;
+      color:var(--white);
+      text-transform:uppercase;
+      font-weight:600;
+      font-size:13px;
+      padding:30px 6px;
+      border-radius:6px;
+      transition:all .18s ease;
+      letter-spacing:0.8px;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+      color:var(--red);
+      background:rgba(217,4,41,0.06);
+      box-shadow:inset 0 -2px 0 var(--red);
+    }
+
+    .container{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header.hero{
+      width:100%;
+      height:85vh;
+      min-height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.6)),
+        url('imagens/criancas.png');
+      background-position:center;
+      background-size:cover;
+      background-attachment:fixed;
+      text-align:center;
+    }
+    header.hero h1{
+      font-size:clamp(1.6rem,3vw,2.4rem);
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:10px;
+      letter-spacing:2px;
+    }
+    header.hero p{
+      color:var(--muted);
+      max-width:620px;
+      margin:0 auto;
+    }
+
+    section{padding:72px 0;}
+    section.light{
+      background:var(--white);
+      color:var(--black);
+      border-top-left-radius:28px;
+      border-top-right-radius:28px;
+      margin-top:-32px;
+      box-shadow:0 -20px 60px rgba(0,0,0,0.35);
+    }
+    .section-title{
+      text-align:center;
+      text-transform:uppercase;
+      font-weight:800;
+      letter-spacing:1px;
+      margin-bottom:40px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:36px;
+      align-items:center;
+    }
+    .grid-2 img{
+      width:100%;
+      border-radius:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+    table th, table td{
+      border:1px solid rgba(255,255,255,0.1);
+      padding:12px;
+      text-align:center;
+    }
+    table th{
+      background:rgba(217,4,41,0.2);
+      color:var(--white);
+      text-transform:uppercase;
+      font-weight:600;
+    }
+    table td{
+      color:var(--muted);
+    }
+
+   .gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* sempre 3 colunas */
+  gap: 24px;
+  justify-items: center;
+  align-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: 260px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 40px rgba(217, 4, 41, 0.5);
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr); /* 2 por linha em tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr; /* 1 por linha no celular */
+  }
+}
+
+    footer{
+      padding:32px 0;
+      background:linear-gradient(180deg,var(--gray-900),#050505);
+      color:var(--muted);
+      text-align:center;
+      font-size:14px;
+    }
+
+    @media(max-width:880px){
+      .grid-2{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+
+    .fade-up{transform:translateY(8px);opacity:0;transition:all .6s cubic-bezier(.2,.9,.25,1)}
+    .fade-up.in-view{transform:none;opacity:1}
+
+
+    .hero-cta {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 14px 22px;
+}
+
+/* Botão vermelho */
+.btn-primary {
+  background-color: #e50914;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(229, 9, 20, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(229, 9, 20, 0.3);
+}
+
+/* Botão verde WhatsApp */
+.btn-whatsapp {
+  background-color: #25d366;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 10px;
+  padding: 14px 22px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.2);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(37, 211, 102, 0.3);
+}
+footer {
+  padding: 32px 0;
+  background: linear-gradient(180deg, var(--gray-900), #050505);
+  color: var(--muted);
+  text-align: center; /* garante centralização */
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  display: inline-block; /* ajuda a centralizar */
+  text-align: center;
+}
+
+footer a:hover {
+  color: var(--red); /* mantém vermelho */
+  text-decoration: underline; /* só sublinha no hover */
+}
+
+
+  </style>
+</head>
+<body>
+ <nav>
+    <div>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="kids.html">Jiu-Jitsu Kids</a></li>
+      <li><a href="defesa-pessoal.html">Defesa Pessoal</a></li>
+      <li><a href="contato-academia.html" >Contato</a></li>
+    </ul>
+    </div>
+  </nav>
+
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Técnica ,Respeito e superação</h1>
+        <p>Conheça a história e os valores que fizeram da Tio Chico Jiu-Jitsu uma referência em formação e superação pessoal.</p>
+        <div class="hero-cta">
+          <a href="#sobre" class="btn btn-primary">Conheça a Academia</a>
+          <a href="https://wa.me/5513974077972" target="_blank" class="btn btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- BENEFÍCIOS -->
+  <section class="light fade-up">
+    <div class="container grid-2">
+      <div>
+        <h2 class="section-title">Benefícios para as Crianças</h2>
+        <p>O Jiu-Jitsu Kids vai muito além do esporte. As crianças aprendem valores essenciais como respeito, autocontrole e trabalho em equipe, enquanto se divertem e desenvolvem coordenação, força e confiança.</p>
+        <ul style="list-style:disc; padding-left:20px; margin-top:16px; color:#333;">
+          <li>Melhora da concentração e da disciplina</li>
+          <li>Desenvolvimento motor e equilíbrio</li>
+          <li>Aumento da autoestima e da segurança</li>
+          <li>Respeito ao próximo e espírito de equipe</li>
+        </ul>
+      </div>
+      <div>
+        <img src="imagens/crianca1.jpeg" alt="Crianças praticando Jiu-Jitsu na TCJJ">
+      </div>
+    </div>
+  </section>
+
+ <!-- GALERIA DE EVENTOS -->
+  <section class="fade-up light">
+    <div class="container">
+      <h2 class="section-title">Eventos e Comemorações</h2>
+      <p style="text-align:center; max-width:700px; margin:0 auto 40px; color:var(--muted);">
+       
+
+      <div class="gallery">
+        <img src="imagens/transormes.png" >
+        <img src="imagens/pequenos.png" alt="Aniversário da Academia">
+        <img src="imagens/pequenos2.png" alt="Evento de encerramento do ano">
+       
+      </div>
+    </div>
+
+  <section class="fade-up light">
+  <div class="container">
+    <h2 class="section-title">Dicas para os Pais</h2><br><br>
+    
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3>Preparação para o treino</h3>
+        <p>Explique a criança sobre as regras e incentive a participação para criar confiança.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3>Alimentação e hidratação</h3>
+        <p>Certifique-se de que a criança esteja bem alimentada e hidratada antes da aula.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+  <!-- DEPOIMENTOS -->
+<section class="fade-up" style="background:var(--gray-900);">
+  <div class="container">
+    <h2 class="section-title">Depoimento dos pais de nossos alunos</h2>
+    <p style="text-align:center; max-width:680px; margin:0 auto 40px; color:var(--muted);">
+      A confiança e o desenvolvimento das crianças também são percebidos pelos pais.
+      Veja o que alguns deles dizem sobre o Jiu-Jitsu Kids da TCJJ.
+    </p>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+      <!-- Depoimento 1 -->
+      <div style="background:#111; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.4);">
+        <p style="font-style:italic; color:#e0e0e0;">“Minha filha, Lorena, ama as aulas. Depois que entrou na academia deixou um pouco as telas, está mais interessada em brincar e convive melhoe em casa, até mesmo com irmão”</p>
+        <p style="margin-top:12px; font-weight:700; color:var(--red);">— Mariana Costa, mãe da Lorena (8 anos)</p>
+      </div>
+
+      <!-- Depoimento 2 -->
+      <div style="background:#111; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.4);">
+        <p style="font-style:italic; color:#e0e0e0;">“Sophia sempre quis lutar,se adaptou na academia, por ser ambiente acolhedor, participa de campeonatos e já foi campeà em algumas competições.”</p>
+        <p style="margin-top:12px; font-weight:700; color:var(--red);">— Rodrigo Lima, pai da Sophia Vitória (11 anos)</p>
+      </div>
+
+      <!-- Depoimento 3 -->
+      <div style="background:#111; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.4);">
+        <p style="font-style:italic; color:#e0e0e0;">“Ver meu filho aprendendo respeito e superação enquanto se diverte é incrível. A TCJJ faz parte da nossa rotina.”</p>
+        <p style="margin-top:12px; font-weight:700; color:var(--red);">— Camila Ribeiro, mãe do Lucas (10 anos)</p>
+      </div>
+    </div>
+
+   
+</section>
+<!-- FIM DEPOIMENTOS -->
+
+
+  
+
+ <footer>
+  <p>© <strong>TCJJ - Tio Chico Jiu-Jitsu</strong> — Todos os direitos reservados.</p>
+  <p>
+    📍 Rua Comendador Freixo, 59 - Vila Valença - São Vicente/SP<br>
+    📞 (13) 9 7407-7972<br>
+    ✉️ <a href="mailto:equipetcjj@hotmail.com">equipetcjj@hotmail.com</a>
+  </p>
+</footer>
+
+  <script>
+    (function(){
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, {threshold:0.12});
+      document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+    })();
+  </script>
+</body>
+</html>

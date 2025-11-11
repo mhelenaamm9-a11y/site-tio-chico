@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Defesa Pessoal Feminina — Tio Chico Jiu-Jitsu</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black: #000000;
+      --white: #ffffff;
+      --red: #d90429;
+      --gray-900: #0f0f0f;
+      --gray-700: #222;
+      --muted: #bdbdbd;
+      --container: 1100px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--black) 0%,var(--gray-900) 100%);
+      color:var(--white);
+      line-height:1.6;
+    }
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:999;
+      width:100%;
+      background:rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      padding:30px 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom:1px solid var(--black);
+    }
+    .logo{height:56px;}
+    nav ul{display:flex; gap:22px; align-items:center; list-style:none; margin:0; padding:0;}
+    nav ul li a{
+      text-decoration:none;
+      color:var(--white);
+      text-transform:uppercase;
+      font-weight:600;
+      font-size:13px;
+      padding:8px 6px;
+      border-radius:6px;
+      transition:all .18s ease;
+      letter-spacing:0.8px;
+    }
+    nav ul li a.active,
+    nav ul li a:hover{
+      color:var(--red);
+      background:rgba(217,4,41,0.06);
+      box-shadow:inset 0 -2px 0 var(--red);
+    }
+
+    .container{
+      max-width:var(--container);
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header.hero{
+      width:100%;
+      height:80vh;
+      min-height:420px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+        url('imagens/defesa.jpeg');
+      background-position:center;
+      background-size:cover;
+      background-attachment:fixed;
+      text-align:center;
+    }
+    header.hero h1{
+      font-size:clamp(1.6rem,3vw,2.4rem);
+      font-weight:900;
+      
+      text-transform:uppercase;
+      margin-bottom:10px;
+      letter-spacing:2px;
+    }
+    header.hero p{
+      color:var(--muted);
+      max-width:620px;
+      height: 90px;
+      margin:0 auto;
+    }
+
+    section{padding:72px 0;}
+    section.light{
+      background:var(--white);
+      color:var(--black);
+      border-top-left-radius:28px;
+      border-top-right-radius:28px;
+      margin-top:-32px;
+      box-shadow:0 -20px 60px rgba(0,0,0,0.35);
+    }
+    .section-title{
+      text-align:center;
+      text-transform:uppercase;
+      font-weight:800;
+      letter-spacing:1px;
+      margin-bottom:40px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:36px;
+      align-items:center;
+    }
+    .grid-2 img{
+      width:100%;
+      border-radius:12px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+    }
+    table th, table td{
+      border:1px solid rgba(255,255,255,0.1);
+      padding:12px;
+      text-align:center;
+    }
+    table th{
+      background:rgba(217,4,41,0.2);
+      color:var(--white);
+      text-transform:uppercase;
+      font-weight:600;
+    }
+    table td{
+      color:var(--muted);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+    }
+    .gallery img{
+      width:200%;
+      border-radius:12px;
+      object-fit:cover;
+      height:200px;
+      box-shadow:0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .btn{
+      display:inline-block;
+      background:var(--red);
+      color:var(--white);
+      padding:14px 22px;
+      border-radius:10px;
+      font-weight:700;
+      text-decoration:none;
+      transition:transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{transform:translateY(-3px); box-shadow:0 10px 30px rgba(217,4,41,0.25)}
+
+    footer{
+      padding:32px 0;
+      background:linear-gradient(180deg,var(--gray-900),#050505);
+      color:var(--muted);
+      text-align:center;
+      font-size:14px;
+    }
+
+    @media(max-width:880px){
+      .grid-2{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+
+    .fade-up{transform:translateY(8px);opacity:0;transition:all .6s cubic-bezier(.2,.9,.25,1)}
+    .fade-up.in-view{transform:none;opacity:1}
+
+
+    .hero-cta {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 14px 22px;
+}
+
+/* Botão vermelho */
+.btn-primary {
+  background-color: #e50914;
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(229, 9, 20, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(229, 9, 20, 0.3);
+}
+
+/* Botão verde WhatsApp */
+.btn-whatsapp {
+  background-color: #25d366;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 10px;
+  padding: 14px 22px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.2);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(37, 211, 102, 0.3);
+}
+footer {
+  padding: 32px 0;
+  background: linear-gradient(180deg, var(--gray-900), #050505);
+  color: var(--muted);
+  text-align: center; /* garante centralização */
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  display: inline-block; /* ajuda a centralizar */
+  text-align: center;
+}
+
+footer a:hover {
+  color: var(--red); /* mantém vermelho */
+  text-decoration: underline; /* só sublinha no hover */
+}
+
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="kids.html">Jiu-Jitsu Kids</a></li>
+      <li><a href="defesa-pessoal.html" >Defesa Pessoal</a></li>
+      <li><a href="contato-academia.html" >Contato</a></li>
+    </ul>
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+ <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Técnica, Respeito e Superação!</h1>
+        <p>Um programa criado para fortalecer o corpo e a mente das mulheres, promovendo segurança, autoestima e empoderamento através da arte  do Jiu-Jitsu.</p>
+        <div class="hero-cta">
+          <a href="#beneficios" class="btn btn-primary">Conheça o Programa</a>
+          <a href="https://wa.me/5513974077972" target="_blank" class="btn btn-whatsapp">Fale Conosco</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BENEFÍCIOS -->
+  <section id="beneficios" class="light fade-up">
+    <div class="container grid-2">
+      <div>
+        <h2 class="section-title">Defesa Pessoal Feminina</h2>
+        <p>O curso de Defesa Pessoal Feminina da TCJJ foi desenvolvido especialmente para mulheres que desejam se sentir seguras, confiantes e preparadas para qualquer situação. Mais do que aprender técnicas, as alunas vivenciam um processo de autoconhecimento e fortalecimento físico e emocional.</p>
+        <ul style="list-style:disc; padding-left:20px; margin-top:16px; color:#333;">
+          <li>Aprenda a utilizar sua força de forma inteligente e eficiente</li>
+          <li>Desenvolva autoconfiança e postura de segurança</li>
+          <li>Melhore o condicionamento físico e o equilíbrio emocional</li>
+          <li>Conecte-se com uma comunidade acolhedora e motivadora</li>
+        </ul>
+      </div>
+      <div>
+        <img src="imagens/aula-defesa.jpeg" alt="Aula de defesa pessoal feminina">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="fade-up">
+    <div class="container">
+      <h2 class="section-title">Treinos e Vivências</h2>
+      <p style="text-align:center; max-width:680px; margin:0 auto 40px; color:var(--muted);">
+        Cada aula é uma experiência transformadora: o ambiente é leve, respeitoso e inspirador. As alunas aprendem a reagir com serenidade, desenvolver foco e perceber o próprio potencial de forma prática e segura.
+      </p>
+      
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="light fade-up">
+    <div class="container">
+      <h2 class="section-title">O que as Alunas Dizem</h2>
+      <p style="text-align:center; max-width:680px; margin:0 auto 40px; color:#333;">
+        Mais do que uma aula, é uma jornada de autoconfiança e superação. Veja como a defesa pessoal mudou a vida de quem já participa do programa.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
+        <div style="background:#111; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.4);">
+          <p style="font-style:italic; color:#e0e0e0;">“As aulas mudaram a forma como me enxergo. Hoje me sinto mais confiante, equilibrada e capaz.”</p>
+          <p style="margin-top:12px; font-weight:700; color:var(--red);">— Ana Paula, 28 anos</p>
+        </div>
+        <div style="background:#111; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.4);">
+          <p style="font-style:italic; color:#e0e0e0;">“Aprendi que a verdadeira força está em manter a calma e acreditar em mim mesma.”</p>
+          <p style="margin-top:12px; font-weight:700; color:var(--red);">— Juliana Mendes, 32 anos</p>
+        </div>
+        <div style="background:#111; border-radius:14px; padding:24px; box-shadow:0 8px 28px rgba(0,0,0,0.4);">
+          <p style="font-style:italic; color:#e0e0e0;">“Me sinto acolhida e inspirada a cada treino. A energia das mulheres aqui é incrível!”</p>
+          <p style="margin-top:12px; font-weight:700; color:var(--red);">— Camila Souza, 25 anos</p>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:40px;">
+        <a href="https://wa.me/5513974077972" target="_blank" class="btn btn-whatsapp">Quero Participar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCENTIVO FINAL -->
+  <section class="fade-up">
+    <div class="container grid-2">
+      <div>
+       <img src="imagens/aluna-felizes.jpeg" alt="Alunas felizes após aula de defesa pessoal" width="400" height="550">
+
+      </div>
+      <div>
+        <h2 class="section-title">Empodere-se Hoje</h2>
+        <p>Descubra o poder que existe em você. A Defesa Pessoal Feminina da TCJJ não é apenas sobre lutar — é sobre conquistar autoconfiança, coragem e equilíbrio para enfrentar qualquer desafio da vida.</p>
+        <p>Venha fazer parte de uma comunidade de mulheres fortes, determinadas e inspiradoras. Comece agora essa transformação!</p>
+       
+      </div>
+    </div>
+  </section>
+ <footer>
+  <p>© <strong>TCJJ - Tio Chico Jiu-Jitsu</strong> — Todos os direitos reservados.</p>
+  <p>
+    📍 Rua Comendador Freixo, 59 - Vila Valença - São Vicente/SP<br>
+    📞 (13) 9 7407-7972<br>
+    ✉️ <a href="mailto:equipetcjj@hotmail.com">equipetcjj@hotmail.com</a>
+  </p>
+</footer>
+
+
+
+  <script>
+    (function(){
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, {threshold:0.12});
+      document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+    })();
+  </script>
+</body>
+</html>
